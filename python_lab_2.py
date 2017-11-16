@@ -129,15 +129,23 @@ def factorial(n):
 	return int(1 if (n < 1) else n * factorial(n-1))
 
 def to_roman(n):
-    """ 13: Convert number integer to Roman numeral
+	""" 13: Convert number integer to Roman numeral
 
-    >>> to_roman(598)
-    [DXCVIII]
-    """
+	>>> to_roman(598)
+	'DXCVIII'
+	"""
+	val = (1000, 900,  500, 400, 100,  90, 50,  40, 10,  9,   5,  4,   1)
+	syb = ('M',  'CM', 'D', 'CD','C', 'XC','L','XL','X','IX','V','IV','I')
+	roman_num = ""
+	for i in range(len(val)):
+		count = int(n / val[i])
+		roman_num += syb[i] * count
+		n -= val[i] * count
+	return roman_num
 
 def rima(word1, word2):
 	""" 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima, 
-	si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
+		si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
 
 	>>> rima(flor, coliflor)
 	rima
@@ -147,6 +155,7 @@ def rima(word1, word2):
 	no rima
 	"""
 
+
 def capital(pesos, interes, anios):
 	""" 15: Pide una cantidad de pesos, una tasa de interés y un numero de años. Muestra en cuanto se habrá convertido el 
 	capital inicial transcurridos esos años si cada año se aplica la tasa de interés introducida.
@@ -154,3 +163,4 @@ def capital(pesos, interes, anios):
 	>>> capital(10000, 4.5, 20)
 	24117.14
 	"""
+	return float("%.2f" % (pesos*(1+interes/100)**anios))
