@@ -7,3 +7,4 @@ install:
   - pip install autopep8
 script:
   - python -m compileall .
+  - python -m doctest python_lab_2.py
