@@ -79,9 +79,11 @@ def has_uppercase(word):
 def contar_vocales(cadena):
 	""" 9: Return number of vocales in a word.
 
-	>>> contar_vocales(murcielago)
+	>>> contar_vocales("murcielago")
  	5
  	"""
+
+ 	return len(filter(lambda x: x in ("a", "e", "i", "o", "u"),  cadena))
 
 
 def square(list):  
