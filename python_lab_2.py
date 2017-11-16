@@ -105,13 +105,14 @@ def square(list):
 	return map(lambda x: x**2,list)
 
 def is_prime(n):
-    """ 11:  Return if n is prime.
-    
-    >>> is_prime(5)
+	""" 11:  Return if n is prime.
+
+	>>> is_prime(5)
 	True
-    >>> is_prime(6)
+	>>> is_prime(6)
 	False
-    """
+	"""
+	return all(n % i for i in xrange(2, n))
 
 def factorial(n):
 	""" 12: Return the factorial of n, an exact integer >= 0.
