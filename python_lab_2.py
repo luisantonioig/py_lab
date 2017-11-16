@@ -147,13 +147,18 @@ def rima(word1, word2):
 	""" 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima, 
 		si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
 
-	>>> rima(flor, coliflor)
-	rima
-	>>> rima(amar, plantar)
-	rima un poco.
-	>>> rima(azucar, barrer)
-	no rima
+	>>> rima("flor", "coliflor")
+	'rima'
+	>>> rima("amar", "plantar")
+	'rima un poco.'
+	>>> rima("azucar", "barrer")
+	'no rima'
 	"""
+	res = list()
+	res.append("no rima")
+	res.append("rima un poco.")
+	res.append("rima")
+	return res[coinsidencia(word1,word2) - 2]
 
 
 def capital(pesos, interes, anios):
@@ -164,3 +169,14 @@ def capital(pesos, interes, anios):
 	24117.14
 	"""
 	return float("%.2f" % (pesos*(1+interes/100)**anios))
+
+def coinsidencia(pal1,pal2):
+	con = 1
+	while pal1[::-1][:con] == pal2[::-1][:con]:
+		con += 1
+	return pack(con)
+
+def pack(num):
+	if num > 4:
+		return 4
+	return num
