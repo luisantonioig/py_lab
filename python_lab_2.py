@@ -72,9 +72,10 @@ def is_leap_year(year):
 def has_uppercase(word):
 	""" 8: Evaluate if a word has uppercase letters
 
-	>>> has_uppercase(MayuSculA)
+	>>> has_uppercase("MayuSculA")
 	3
 	"""
+	return len(filter(lambda x: x.isupper(), word))
 
 def contar_vocales(cadena):
 	""" 9: Return number of vocales in a word.
@@ -82,7 +83,6 @@ def contar_vocales(cadena):
 	>>> contar_vocales("murcielago")
  	5
  	"""
-
  	return len(filter(lambda x: x in ("a", "e", "i", "o", "u"),  cadena))
 
 
@@ -144,4 +144,3 @@ def capital(pesos, interes, anios):
 	>>> capital(10000, 4.5, 20)
 	24117.14
 	"""
-
