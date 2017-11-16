@@ -87,12 +87,13 @@ def contar_vocales(cadena):
 
 
 def square(list):  
-    """ 10: Calculate the square of the numbers in a list 
+	""" 10: Calculate the square of the numbers in a list 
 
-    >>> l = [0, 1, 2, 3] 
-    >>> square(l) 
+	>>> l = [0, 1, 2, 3] 
+	>>> square(l) 
 	[0, 1, 4, 9] 
-    """ 
+	"""
+	return map(lambda x: x**2,list)
 
 def is_prime(n):
     """ 11:  Return if n is prime.
