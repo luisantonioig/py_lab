@@ -17,6 +17,8 @@ def lower_up(lower,upper):
 	14
 	15
 	"""
+	for n in range(lower, upper + 1):
+		print(n)
 
 def all_the_args(*args, **kwargs):
 
@@ -24,8 +26,10 @@ def all_the_args(*args, **kwargs):
 
 	>>> all_the_args(1, 2, a=3, b=4)
 	(1, 2)
-	{"a": 3, "b": 4}
+	{'a': 3, 'b': 4}
 	"""
+	print args
+	print kwargs
 
 def may_20(tup):
 	""" 3: Definir una tupla con 10 números. Imprimir la cantidad de números superiores a 20.
