@@ -102,17 +102,18 @@ def is_prime(n):
     """
 
 def factorial(n):
-    """ 12: Return the factorial of n, an exact integer >= 0.
-    If the result is small enough to fit in an int, return an int.
-    Else return a long.
+	""" 12: Return the factorial of n, an exact integer >= 0.
+	If the result is small enough to fit in an int, return an int.
+	Else return a long.
 
-    >>> [factorial(n) for n in range(6)]
+	>>> [factorial(n) for n in range(6)]
 	[1, 1, 2, 6, 24, 120]
-    >>> [factorial(long(n)) for n in range(6)]
+	>>> [factorial(long(n)) for n in range(6)]
 	[1, 1, 2, 6, 24, 120]
-    >>> factorial(30)
+	>>> factorial(30)
 	265252859812191058636308480000000L
-    """
+	"""
+	return int(1 if (n < 1) else n * factorial(n-1))
 
 def to_roman(n):
     """ 13: Convert number integer to Roman numeral
