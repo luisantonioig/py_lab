@@ -34,10 +34,14 @@ def all_the_args(*args, **kwargs):
 def may_20(tup):
 	""" 3: Definir una tupla con 10 números. Imprimir la cantidad de números superiores a 20.
 	
-	>>> may_20(10, 16, 22, 26, 27, 30)
+	>>> may_20([10, 16, 22, 26, 27, 30])
 	22, 26, 27, 30
 
 	"""
+	string = ""
+	for n in filter(lambda x: x>20, tup):
+		string += str(n) + ", "
+	print string[:len(string) - 2]
 
 def word_filter(list_of_words, n):
 	""" 4: Filtra las palabras que contienen más de n caracteres.
