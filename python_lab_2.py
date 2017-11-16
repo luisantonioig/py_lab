@@ -27,7 +27,7 @@ def all_the_args(*args, **kwargs):
 	{"a": 3, "b": 4}
 	"""
 
-def may_20 (tup):
+def may_20(tup):
 	""" 3: Definir una tupla con 10 números. Imprimir la cantidad de números superiores a 20.
 	
 	>>> may_20(10, 16, 22, 26, 27, 30)
@@ -36,12 +36,13 @@ def may_20 (tup):
 	"""
 
 def word_filter(list_of_words, n):
-    """ 4: Filtra las palabras que contienen más de n caracteres.
+	""" 4: Filtra las palabras que contienen más de n caracteres.
 
-    >>> word_filter([hello, bye, computer, software, python], 5)
-	[computer, software, python]
+	>>> word_filter(["hello", "bye", "computer", "software", "python"], 5)
+	['computer', 'software', 'python']
 
 	"""
+	return filter(lambda x: len(x) > n, list_of_words)
 
 def string_length(list):
 	""" 5: imprime el largo de una cadena de caracteres
