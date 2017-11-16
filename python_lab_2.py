@@ -50,6 +50,7 @@ def string_length(list):
 	>>> string_length("popularity")
 	10
 	"""
+	return len(list)
 
 def is_vocal(x):
 	""" 6: Determines if it is vocal
