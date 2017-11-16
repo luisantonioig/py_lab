@@ -4,7 +4,7 @@ def lower_up(lower, upper):
     5
     6
     7
-    8
+:    8
     9
     10
     11
@@ -30,8 +30,8 @@ def all_the_args(*args, **kwargs):
 
 
 def may_20(tup):
-    """ 3: Definir una tupla con 10 números. Imprimir la
-    cantidad de números superiores a 20.
+    """ 3: Definir una tupla con 10 numeros. Imprimir la
+    cantidad de numeros superiores a 20.
     >>> may_20([10, 16, 22, 26, 27, 30])
     22, 26, 27, 30
 
@@ -43,7 +43,7 @@ def may_20(tup):
 
 
 def word_filter(list_of_words, n):
-    """ 4: Filtra las palabras que contienen más de n caracteres.
+    """ 4: Filtra las palabras que contienen mas de n caracteres.
 
     >>> word_filter(["hello", "bye", "computer", "software", "python"], 5)
     ['computer', 'software', 'python']
@@ -171,10 +171,10 @@ def rima(word1, word2):
 
 
 def capital(pesos, interes, anios):
-    """ 15: Pide una cantidad de pesos, una tasa de interés y
-    un numero de años. Muestra en cuanto se habrá convertido el
-    capital inicial transcurridos esos años si cada año se aplica
-    la tasa de interés introducida.
+    """ 15: Pide una cantidad de pesos, una tasa de interes y
+    un numero de anios. Muestra en cuanto se habra convertido el
+    capital inicial transcurridos esos anios si cada anio se aplica
+    la tasa de interes introducida.
 
     >>> capital(10000, 4.5, 20)
     24117.14
