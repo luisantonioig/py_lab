@@ -68,6 +68,7 @@ def is_leap_year(year):
 	>>> is_leap_year(2016)
 	True
 	"""
+	return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 def has_uppercase(word):
 	""" 8: Evaluate if a word has uppercase letters
