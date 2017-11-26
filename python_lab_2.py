@@ -1,4 +1,6 @@
-def lower_up(lower, upper):
+from typing import Iterator
+
+def lower_up(lower: int, upper: int):
     """ 1: Returns a list of numbers from the lower number to the upper number:
     >>> lower_up(5,15)
     5
@@ -17,7 +19,7 @@ def lower_up(lower, upper):
         print(n)
 
 
-def all_the_args(*args, **kwargs):
+def all_the_args(*args: int, **kwargs: int):
     """ 2: Return an array. Use * to expand positional args
     and use ** to expand keyword args
 
@@ -25,8 +27,8 @@ def all_the_args(*args, **kwargs):
     (1, 2)
     {'a': 3, 'b': 4}
     """
-    print args
-    print kwargs
+    print(args)
+    print(kwargs)
 
 
 def may_20(tup):
@@ -39,10 +41,10 @@ def may_20(tup):
     string = ""
     for n in filter(lambda x: x > 20, tup):
         string += str(n) + ", "
-    print string[:len(string) - 2]
+    print(string[:len(string) - 2])
 
 
-def word_filter(list_of_words, n):
+def word_filter(list_of_words: Iterator[str], n: int) -> Iterator[str]:
     """ 4: Filtra las palabras que contienen mas de n caracteres.
 
     >>> word_filter(["hello", "bye", "computer", "software", "python"], 5)
@@ -52,7 +54,7 @@ def word_filter(list_of_words, n):
     return filter(lambda x: len(x) > n, list_of_words)
 
 
-def string_length(list):
+def string_length(list: str) -> int:
     """ 5: imprime el largo de una cadena de caracteres
 
     >>> string_length("popularity")
@@ -61,7 +63,7 @@ def string_length(list):
     return len(list)
 
 
-def is_vocal(x):
+def is_vocal(x: str) -> bool:
     """ 6: Determines if it is vocal
 
     >>> is_vocal("a")
@@ -72,7 +74,7 @@ def is_vocal(x):
     return x in ("a", "e", "i", "o", "u")
 
 
-def is_leap_year(year):
+def is_leap_year(year: int) -> bool:
     """ 7: Determines if a year is a leap year.
 
     >>> is_leap_year(2016)
@@ -81,25 +83,25 @@ def is_leap_year(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-def has_uppercase(word):
+def has_uppercase(word: str) -> int:
     """ 8: Evaluate if a word has uppercase letters
 
     >>> has_uppercase("MayuSculA")
     3
     """
-    return len(filter(lambda x: x.isupper(), word))
+    return sum(1 for _ in filter(lambda x: x.isupper(), word))
 
 
-def contar_vocales(cadena):
+def contar_vocales(cadena: str):
     """ 9: Return number of vocales in a word.
 
     >>> contar_vocales("murcielago")
     5
     """
-    return len(filter(lambda x: x in ("a", "e", "i", "o", "u"),  cadena))
+    return sum(1 for _ in filter(lambda x: x in ("a", "e", "i", "o", "u"),  cadena))
 
 
-def square(list):
+def square(list: Iterator[int]) -> Iterator[int]:
     """ 10: Calculate the square of the numbers in a list
 
     >>> l = [0, 1, 2, 3]
@@ -109,7 +111,7 @@ def square(list):
     return map(lambda x: x**2, list)
 
 
-def is_prime(n):
+def is_prime(n: int) -> bool:
     """ 11:  Return if n is prime.
 
     >>> is_prime(5)
@@ -117,10 +119,10 @@ def is_prime(n):
     >>> is_prime(6)
     False
     """
-    return all(n % i for i in xrange(2, n))
+    return all(n % i for i in range(2, n))
 
 
-def factorial(n):
+def factorial(n: int) -> int:
     """ 12: Return the factorial of n, an exact integer >= 0.
     If the result is small enough to fit in an int, return an int.
     Else return a long.
@@ -135,7 +137,7 @@ def factorial(n):
     return int(1 if (n < 1) else n * factorial(n - 1))
 
 
-def to_roman(n):
+def to_roman(n: int) -> str:
     """ 13: Convert number integer to Roman numeral
 
     >>> to_roman(598)
@@ -152,7 +154,7 @@ def to_roman(n):
     return roman_num
 
 
-def rima(word1, word2):
+def rima(word1: str, word2: str) -> str:
     """ 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima,
         si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
 
@@ -170,7 +172,7 @@ def rima(word1, word2):
     return res[coinsidencia(word1, word2) - 2]
 
 
-def capital(pesos, interes, anios):
+def capital(pesos: int, interes: float, anios) -> float:
     """ 15: Pide una cantidad de pesos, una tasa de interes y
     un numero de anios. Muestra en cuanto se habra convertido el
     capital inicial transcurridos esos anios si cada anio se aplica
@@ -182,14 +184,14 @@ def capital(pesos, interes, anios):
     return float("%.2f" % (pesos * (1 + interes / 100)**anios))
 
 
-def coinsidencia(pal1, pal2):
+def coinsidencia(pal1: str, pal2:str) -> int:
     con = 1
     while pal1[::-1][:con] == pal2[::-1][:con]:
         con += 1
     return pack(con)
 
 
-def pack(num):
+def pack(num: int) -> int:
     if num > 4:
         return 4
     return num
