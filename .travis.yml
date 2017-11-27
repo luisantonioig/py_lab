@@ -8,6 +8,7 @@ install:
   - pip install coverage
   - pip install hypothesis
   - pip install pycontracts
+  - pip install mypy
 script:
   - python -m compileall .
   - python -m doctest python_lab_2.py --max-complexity=2
