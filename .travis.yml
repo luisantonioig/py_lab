@@ -1,5 +1,5 @@
 language: python
-python: "3.1"
+python: "3.2"
 
 install:
   - pip install flake8
