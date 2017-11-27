@@ -13,9 +13,8 @@ class TestPyLab2(unittest.TestCase):
         assert len(list(may_20(l))) == len(list(may_20(l + [3])))
 
     @given(st.lists(st.text()), st.integers())
-    def test_word_filter(self, st, n):
-        assert len(st) <= string_length(st)
-        assert word_filter(st, n) == word_filter(word_filter(st, n), n)
+    def test_word_filter(self, ls, n):
+        assert word_filter(ls, n) == word_filter(list(word_filter(ls, n)), n)
 
     @given(st.text())
     def test_string_length(self, s):
@@ -27,7 +26,7 @@ class TestPyLab2(unittest.TestCase):
         if is_vocal(char):
         	assert is_vocal(char) != is_vocal(chr(ord(char) + 1))
 
-    @given(st.integers(min_value=0))
+    @given(st.integers(min_value=1))
     def test_is_leap_year(self, year):
         assert (is_leap_year(year) == True) or (is_leap_year(year) == False)
 

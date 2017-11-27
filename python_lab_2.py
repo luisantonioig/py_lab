@@ -43,7 +43,7 @@ def may_20(tup: Iterator[int]):
         return list()
     return list(filter(lambda x: x > 20, tup))
 
-@contract(n='int,>0', list_of_words='list[int]', returns='list[N]')
+@contract(list_of_words='list[str]', n ='int', returns='list[str]')
 def word_filter(list_of_words: Iterator[str], n: int) -> Iterator[str]:
     """ 4: Filtra las palabras que contienen mas de n caracteres.
 
