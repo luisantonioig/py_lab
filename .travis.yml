@@ -13,3 +13,4 @@ script:
   - python -m compileall .
   - python -m doctest python_lab_2.py --max-complexity=2
   - nosetests --cover-min-percentage=99 python_lab_2.py
+  - python3 -m pytest -v test_hypothesis.py
