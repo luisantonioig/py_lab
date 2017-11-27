@@ -10,6 +10,7 @@ install:
   - pip install pycontracts
   - pip install mypy
 script:
+  - python3 -m pip install -U mypy
   - python -m compileall .
   - python -m doctest python_lab_2.py --max-complexity=2
   - nosetests --cover-min-percentage=99 python_lab_2.py
