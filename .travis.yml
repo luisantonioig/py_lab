@@ -8,7 +8,6 @@ install:
   - pip install coverage
   - pip install hypothesis
   - pip install pycontracts
-  - pip install mypy
 script:
   - python3 -m pip install -U mypy
   - python -m compileall .
