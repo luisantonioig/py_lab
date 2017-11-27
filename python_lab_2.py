@@ -1,5 +1,7 @@
+from contracts import contract
 from typing import Iterator
 
+@contract(lower='int,>0', upper='int,>0')
 def lower_up(lower: int, upper: int):
     """ 1: Returns a list of numbers from the lower number to the upper number:
     >>> lower_up(5,15)
@@ -18,7 +20,6 @@ def lower_up(lower: int, upper: int):
     for n in range(lower, upper + 1):
         print(n)
 
-
 def all_the_args(*args: int, **kwargs: int):
     """ 2: Return an array. Use * to expand positional args
     and use ** to expand keyword args
@@ -30,20 +31,19 @@ def all_the_args(*args: int, **kwargs: int):
     print(args)
     print(kwargs)
 
-
-def may_20(tup):
+@contract(tup='list[int]', returns='list[N]')
+def may_20(tup: Iterator[int]):
     """ 3: Definir una tupla con 10 numeros. Imprimir la
     cantidad de numeros superiores a 20.
     >>> may_20([10, 16, 22, 26, 27, 30])
-    22, 26, 27, 30
+    [22, 26, 27, 30]
 
     """
-    string = ""
-    for n in filter(lambda x: x > 20, tup):
-        string += str(n) + ", "
-    print(string[:len(string) - 2])
+    if tup == None:
+        return list()
+    return list(filter(lambda x: x > 20, tup))
 
-
+@contract(n='int,>0', list_of_words='list[int]', returns='list[N]')
 def word_filter(list_of_words: Iterator[str], n: int) -> Iterator[str]:
     """ 4: Filtra las palabras que contienen mas de n caracteres.
 
@@ -51,18 +51,18 @@ def word_filter(list_of_words: Iterator[str], n: int) -> Iterator[str]:
     ['computer', 'software', 'python']
 
     """
-    return filter(lambda x: len(x) > n, list_of_words)
+    return list(filter(lambda x: len(x) > n, list_of_words))
 
-
-def string_length(list: str) -> int:
+@contract(s='str', returns='int')
+def string_length(s: str) -> int:
     """ 5: imprime el largo de una cadena de caracteres
 
     >>> string_length("popularity")
     10
     """
-    return len(list)
+    return sum([1 for i in s])
 
-
+@contract(x='str', returns='bool')
 def is_vocal(x: str) -> bool:
     """ 6: Determines if it is vocal
 
@@ -73,7 +73,7 @@ def is_vocal(x: str) -> bool:
     """
     return x in ("a", "e", "i", "o", "u")
 
-
+@contract(year='int,>0', returns='bool')
 def is_leap_year(year: int) -> bool:
     """ 7: Determines if a year is a leap year.
 
@@ -82,7 +82,7 @@ def is_leap_year(year: int) -> bool:
     """
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
-
+@contract(word='str', returns='int')
 def has_uppercase(word: str) -> int:
     """ 8: Evaluate if a word has uppercase letters
 
@@ -91,8 +91,8 @@ def has_uppercase(word: str) -> int:
     """
     return sum(1 for _ in filter(lambda x: x.isupper(), word))
 
-
-def contar_vocales(cadena: str):
+@contract(cadena='str', returns='int')
+def contar_vocales(cadena: str) -> int:
     """ 9: Return number of vocales in a word.
 
     >>> contar_vocales("murcielago")
@@ -100,17 +100,26 @@ def contar_vocales(cadena: str):
     """
     return sum(1 for _ in filter(lambda x: x in ("a", "e", "i", "o", "u"),  cadena))
 
+@contract(cadena='str', returns='int')
+def contar_consonantes(cadena: str) -> int:
+    """ 9: Return number of vocales in a word.
 
-def square(list: Iterator[int]) -> Iterator[int]:
+    >>> contar_vocales("murcielago")
+    5
+    """
+    return sum(1 for _ in filter(lambda x: x not in ("a", "e", "i", "o", "u"),  cadena))
+
+@contract(l='list[int]', returns='list[int]')
+def square(l: Iterator[int]) -> Iterator[int]:
     """ 10: Calculate the square of the numbers in a list
 
     >>> l = [0, 1, 2, 3]
     >>> square(l)
     [0, 1, 4, 9]
     """
-    return map(lambda x: x**2, list)
+    return list(map(lambda x: x**2, l))
 
-
+@contract(n='int,>0', returns='bool')
 def is_prime(n: int) -> bool:
     """ 11:  Return if n is prime.
 
@@ -121,7 +130,7 @@ def is_prime(n: int) -> bool:
     """
     return all(n % i for i in range(2, n))
 
-
+@contract(n='int')
 def factorial(n: int) -> int:
     """ 12: Return the factorial of n, an exact integer >= 0.
     If the result is small enough to fit in an int, return an int.
@@ -129,14 +138,14 @@ def factorial(n: int) -> int:
 
     >>> [factorial(n) for n in range(6)]
     [1, 1, 2, 6, 24, 120]
-    >>> [factorial(long(n)) for n in range(6)]
+    >>> [factorial(n) for n in range(6)]
     [1, 1, 2, 6, 24, 120]
     >>> factorial(30)
-    265252859812191058636308480000000L
+    265252859812191058636308480000000
     """
     return int(1 if (n < 1) else n * factorial(n - 1))
 
-
+@contract(n='int,>0', returns='str')
 def to_roman(n: int) -> str:
     """ 13: Convert number integer to Roman numeral
 
@@ -153,7 +162,7 @@ def to_roman(n: int) -> str:
         n -= val[i] * count
     return roman_num
 
-
+@contract(word1='str', word2='str', returns='str')
 def rima(word1: str, word2: str) -> str:
     """ 14: Indica si dos palabrar riman. Si coinciden las 3 ultimas letras rima,
         si ncoinciden solo 2 rima un poco, si coincide solo 1 no rima.
@@ -172,7 +181,8 @@ def rima(word1: str, word2: str) -> str:
     return res[coinsidencia(word1, word2) - 2]
 
 
-def capital(pesos: int, interes: float, anios) -> float:
+@contract(pesos='int,>0', interes='float', anios='int', returns='float')
+def capital(pesos: int, interes: float, anios: int) -> float:
     """ 15: Pide una cantidad de pesos, una tasa de interes y
     un numero de anios. Muestra en cuanto se habra convertido el
     capital inicial transcurridos esos anios si cada anio se aplica
@@ -184,13 +194,14 @@ def capital(pesos: int, interes: float, anios) -> float:
     return float("%.2f" % (pesos * (1 + interes / 100)**anios))
 
 
+@contract(pal1='str', pal2='str', returns='int')
 def coinsidencia(pal1: str, pal2:str) -> int:
     con = 1
     while pal1[::-1][:con] == pal2[::-1][:con]:
         con += 1
     return pack(con)
 
-
+@contract(num='int,>0', returns='int')
 def pack(num: int) -> int:
     if num > 4:
         return 4
